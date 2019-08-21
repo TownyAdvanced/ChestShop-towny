@@ -1,9 +1,9 @@
 package com.acrobot.chestshop.towny;
 
+import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.TownBlockOwner;
 import com.palmergames.bukkit.towny.object.TownBlockType;
-import com.palmergames.bukkit.towny.object.TownyUniverse;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -20,7 +20,7 @@ public class TownyUtils {
      */
     public static boolean isResident(Player player, Location location) {
         try {
-            return TownyUniverse.getTownBlock(location).getTown().hasResident(player.getName());
+            return TownyAPI.getInstance().getTownBlock(location).getTown().hasResident(player.getName());
         } catch (NotRegisteredException ex) {
             return false;
         }
@@ -50,8 +50,8 @@ public class TownyUtils {
      */
     public static boolean isPlotOwner(Player player, Location location) {
         try {
-            TownBlockOwner owner = TownyUniverse.getDataSource().getResident(player.getName());
-            return TownyUniverse.getTownBlock(location).isOwner(owner);
+            TownBlockOwner owner = TownyAPI.getInstance().getDataSource().getResident(player.getName());
+            return TownyAPI.getInstance().getTownBlock(location).isOwner(owner);
         } catch (NotRegisteredException ex) {
             return false;
         }
@@ -79,7 +79,7 @@ public class TownyUtils {
      * @return Is the location in wilderness?
      */
     public static boolean isInWilderness(Location location) {
-        return TownyUniverse.isWilderness(location.getBlock());
+        return TownyAPI.getInstance().isWilderness(location);
     }
 
     /**
@@ -103,7 +103,7 @@ public class TownyUtils {
      * @return Is the location inside shop plot?
      */
     public static boolean isInsideShopPlot(Location location) {
-        return TownyUniverse.getTownBlock(location).getType() == TownBlockType.COMMERCIAL;
+        return TownyAPI.getInstance().getTownBlock(location).getType() == TownBlockType.COMMERCIAL;
     }
 
     /**

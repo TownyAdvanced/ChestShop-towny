@@ -2,6 +2,7 @@ name: ChestShop-towny
 
 main: com.acrobot.chestshop.towny.Towny
 version: ${project.version}
+api-version: ${project.bukkitAPIVersion}
 
 author: Acrobot
 description: A towny integration for ChestShop 

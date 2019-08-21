@@ -3,6 +3,7 @@ ChestShop notifications
 
 Sample notification extension for [ChestShop](http://dev.bukkit.org/server-mods/chestshop/)
 
+Requires the use of Towny 0.94.0.2 or newer!
 
 Building
 --------------------------------
@@ -26,6 +27,6 @@ Just throw the .jar into your /plugins folder.
 
 Links
 --------------------------------
-* [Forum Thread](http://forums.bukkit.org/threads/4150/)
-* [BukkitDev site](http://dev.bukkit.org/server-mods/chestshop/)
-* [Bug Tracker](http://dev.bukkit.org/server-mods/chestshop/tickets/?status=+)
+* [ChestShop @ Spigot](https://www.spigotmc.org/resources/chestshop.51856/)
+* [ChestShop-Towny @ BukkitDev site](https://dev.bukkit.org/projects/chestshop-towny)
+* [ChestShop-Towny Bug Tracker](https://dev.bukkit.org/projects/chestshop-towny/issues)
