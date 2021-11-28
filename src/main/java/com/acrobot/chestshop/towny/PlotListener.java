@@ -20,6 +20,7 @@ public class PlotListener implements Listener {
 
         if (Permission.has(event.getPlayer(), Permission.PROTECTION_BYPASS)) {
             event.allow();
+            return;
         }
 
         if (isInWilderness(chest, sign) || (Properties.BUILDING_INSIDE_SHOP_PLOTS && !isInsideShopPlot(chest, sign))) {
