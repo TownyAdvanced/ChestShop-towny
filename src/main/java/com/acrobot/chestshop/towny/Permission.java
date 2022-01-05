@@ -22,10 +22,6 @@ public enum Permission {
         return player.hasPermission(node) || player.hasPermission(node.toLowerCase());
     }
 
-    private static boolean hasPermissionSet(Player p, String perm) {
-        return p.isPermissionSet(perm) && p.hasPermission(perm);
-    }
-
     public String toString() {
         return permission;
     }

@@ -53,6 +53,7 @@ public class TownyUtils {
             TownBlockOwner owner = TownyAPI.getInstance().getDataSource().getResident(player.getName());
             return TownyAPI.getInstance().getTownBlock(location).isOwner(owner);
         } catch (NotRegisteredException ex) {
+            // NRE is no longer thrown in modern Towny, keep this until the POM has the Towny version updated.
             return false;
         }
     }
@@ -65,7 +66,7 @@ public class TownyUtils {
      */
     public static boolean isPlotOwner(Player player, Location... locations) {
         for (Location location : locations) {
-            if (!isPlotOwner(player, location)) {
+            if (isInWilderness(location) || !isPlotOwner(player, location)) {
                 return false;
             }
         }
