@@ -54,7 +54,7 @@ public class TownyUtils {
     public static boolean isPlotOwner(Player player, Location location) {
         TownBlockOwner owner = TownyUniverse.getInstance().getResident(player.getName());
         TownBlock townBlock = TownyAPI.getInstance().getTownBlock(location);
-        return townBlock != null && townBlock.isOwner(owner);
+        return townBlock != null && owner != null && townBlock.isOwner(owner);
     }
 
     /**
