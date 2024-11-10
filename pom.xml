@@ -6,7 +6,7 @@
 
     <groupId>com.acrobot.chestshop.towny</groupId>
     <artifactId>chestshop-towny</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <name>ChestShop-towny</name>
 
     <properties>
