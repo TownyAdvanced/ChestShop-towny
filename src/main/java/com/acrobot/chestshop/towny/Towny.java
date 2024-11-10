@@ -2,6 +2,7 @@ package com.acrobot.chestshop.towny;
 
 import com.Acrobot.Breeze.Configuration.Configuration;
 import com.acrobot.chestshop.towny.properties.Properties;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -37,6 +38,7 @@ public class Towny extends JavaPlugin {
     @Override
     public void onDisable() {
         dataFolder = null;
+        HandlerList.unregisterAll(this);
     }
 
     /**
