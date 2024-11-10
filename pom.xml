@@ -6,14 +6,16 @@
 
     <groupId>com.acrobot.chestshop.towny</groupId>
     <artifactId>chestshop-towny</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <name>ChestShop-towny</name>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.bukkitPluginVersion>${project.version} ${buildDescription}</project.bukkitPluginVersion>
         <project.bukkitAPIVersion>1.13</project.bukkitAPIVersion>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <bukkit.dependency.version>1.20.6-R0.1-SNAPSHOT</bukkit.dependency.version>
     </properties>
 
     <repositories>
@@ -22,8 +24,8 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
-            <id>github-Towny</id>
-            <url>https://maven.pkg.github.com/TownyAdvanced/Towny</url>
+            <id>glaremaster-repo</id>
+            <url>https://repo.glaremasters.me/repository/towny/</url>
         </repository>
         <repository>
             <id>chestshop-repo</id>
@@ -33,21 +35,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.13.2-R0.1-SNAPSHOT</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>${bukkit.dependency.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.acrobot.chestshop</groupId>
             <artifactId>chestshop</artifactId>
-            <version>3.12.1-SNAPSHOT</version>
+            <version>3.12.3-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.palmergames.bukkit.towny</groupId>
             <artifactId>towny</artifactId>
-            <version>0.98.0.0</version>
+            <version>0.100.4.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
