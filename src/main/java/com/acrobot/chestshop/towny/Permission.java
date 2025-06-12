@@ -6,7 +6,9 @@ import org.bukkit.entity.Player;
  * @author Acrobot
  */
 public enum Permission {
-    PROTECTION_BYPASS("ChestShop.towny.bypass");
+    PROTECTION_BYPASS("ChestShop.towny.bypass"),
+    TOWN_SHOP("ChestShop.towny.townshop"),
+    NATION_SHOP("ChestShop.towny.nationshop");
 
     private final String permission;
 

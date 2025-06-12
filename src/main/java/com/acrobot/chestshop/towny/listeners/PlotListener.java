@@ -1,6 +1,7 @@
-package com.acrobot.chestshop.towny;
+package com.acrobot.chestshop.towny.listeners;
 
 import com.Acrobot.ChestShop.Events.Protection.BuildPermissionEvent;
+import com.acrobot.chestshop.towny.Permission;
 import com.acrobot.chestshop.towny.properties.Properties;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
