@@ -19,8 +19,10 @@ import org.bukkit.entity.Player;
  */
 public class TownyUtils {
 
-    final static String townShopPrefix = Properties.TOWN_SHOP_PREFIX;
-    final static String nationShopPrefix = Properties.NATION_SHOP_PREFIX;
+    private static final boolean allowTownShops = Properties.ALLOW_TOWN_SHOPS;
+    private static final boolean allowNationShops = Properties.ALLOW_NATION_SHOPS;
+    private static final String townShopPrefix = Properties.TOWN_SHOP_PREFIX;
+    private static final String nationShopPrefix = Properties.NATION_SHOP_PREFIX;
 
     /**
      * Checks if the player is a resident of a given location
@@ -131,6 +133,9 @@ public class TownyUtils {
     }
 
     public static boolean isTownShop(String owner) {
+        if (!allowTownShops) {
+            return false;
+        }
         int prefixLength = townShopPrefix.length();
         String strippedOwner = owner.replace(" ", "");
         // Check if sign line is less than the length of the townShopPrefix and that it contains the townShopPrefix
@@ -160,6 +165,9 @@ public class TownyUtils {
     }
 
     public static boolean isNationShop(String owner) {
+        if (!allowNationShops) {
+            return false;
+        }
         int prefixLength = nationShopPrefix.length();
         String strippedOwner = owner.replace(" ", "");
         // Check if sign line is less than the length of the nation shop prefix and that it contains the nationShopPrefix
