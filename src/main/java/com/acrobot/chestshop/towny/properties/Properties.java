@@ -27,4 +27,7 @@ public class Properties {
 
     @ConfigurationComment("What should the nation name be prefixed with on the first line of the sign?")
     public static String NATION_SHOP_PREFIX = "n-";
+
+    @ConfigurationComment("Restrict chest access to players with permission for that specific shop type.")
+    public static boolean CHEST_ACCESS_BY_PERMISSION = true;
 }

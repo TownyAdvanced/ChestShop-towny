@@ -12,7 +12,13 @@ depend: [ChestShop, Towny]
 permissions:
   ChestShop.towny.bypass:
     default: op
-  ChestShop.towny.townshop:
+  ChestShop.towny.create.townshop:
     default: op
-  ChestShop.towny.nationshop:
+    children:
+      ChestShop.towny.create.townshop.buy: true
+      ChestShop.towny.create.townshop.sell: true
+  ChestShop.towny.create.nationshop:
     default: op
+    children:
+      ChestShop.towny.create.nationshop.buy: true
+      ChestShop.towny.create.nationshop.sell: true

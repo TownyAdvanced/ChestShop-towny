@@ -7,8 +7,12 @@ import org.bukkit.entity.Player;
  */
 public enum Permission {
     PROTECTION_BYPASS("ChestShop.towny.bypass"),
-    TOWN_SHOP("ChestShop.towny.townshop"),
-    NATION_SHOP("ChestShop.towny.nationshop");
+    TOWN_SHOP("ChestShop.towny.create.townshop"),
+    TOWN_SHOP_BUY("ChestShop.towny.create.townshop.buy"),
+    TOWN_SHOP_SELL("ChestShop.towny.create.townshop.sell"),
+    NATION_SHOP("ChestShop.towny.create.nationshop"),
+    NATION_SHOP_BUY("ChestShop.towny.create.nationshop.buy"),
+    NATION_SHOP_SELL("ChestShop.towny.create.nationshop.sell");
 
     private final String permission;
 
@@ -16,8 +20,12 @@ public enum Permission {
         this.permission = permission;
     }
 
-    public static boolean has(Player player, Permission permission) {
-        return has(player, permission.permission);
+    public static boolean has(Player player, Permission... permissions) {
+        for (Permission permission : permissions) {
+            if (has(player, permission.permission))
+                return true;
+        }
+        return false;
     }
 
     public static boolean has(Player player, String node) {
