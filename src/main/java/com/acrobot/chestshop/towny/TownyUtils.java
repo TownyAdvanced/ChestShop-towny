@@ -1,11 +1,16 @@
 package com.acrobot.chestshop.towny;
 
+import com.Acrobot.ChestShop.Database.Account;
+import com.acrobot.chestshop.towny.properties.Properties;
 import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
+import com.palmergames.bukkit.towny.object.Nation;
+import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownBlock;
 import com.palmergames.bukkit.towny.object.TownBlockOwner;
 import com.palmergames.bukkit.towny.object.TownBlockType;
+import com.palmergames.bukkit.towny.object.economy.BankAccount;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -13,6 +18,11 @@ import org.bukkit.entity.Player;
  * @author Acrobot
  */
 public class TownyUtils {
+
+    private static final boolean allowTownShops = Properties.ALLOW_TOWN_SHOPS;
+    private static final boolean allowNationShops = Properties.ALLOW_NATION_SHOPS;
+    private static final String townShopPrefix = Properties.TOWN_SHOP_PREFIX;
+    private static final String nationShopPrefix = Properties.NATION_SHOP_PREFIX;
 
     /**
      * Checks if the player is a resident of a given location
@@ -120,5 +130,69 @@ public class TownyUtils {
         }
 
         return true;
+    }
+
+    public static boolean isTownShop(String owner) {
+        if (!allowTownShops) {
+            return false;
+        }
+        int prefixLength = townShopPrefix.length();
+        String strippedOwner = owner.replace(" ", "");
+        // Check if sign line is less than the length of the townShopPrefix and that it contains the townShopPrefix
+        if (strippedOwner.length() < prefixLength || !strippedOwner.startsWith(townShopPrefix))
+            return false;
+
+        return !TownyUtils.getTownNameFromPrefixedName(strippedOwner).isEmpty();
+    }
+
+    public static Account getTownAccount(String name) {
+        Town town = TownyAPI.getInstance().getTown(TownyUtils.getTownNameFromPrefixedName(name));
+        BankAccount townAccount = town.getAccount();
+        String accountName = townShopPrefix.concat(town.getName());
+        return new Account(accountName, townAccount.getUUID());
+    }
+
+    public static String getTownNameFromPrefixedName(String prefixedName) {
+        // Remove town shop townShopPrefix
+        String strippedName = prefixedName.substring(townShopPrefix.length());
+        for (Town town : TownyAPI.getInstance().getTowns()) {
+            String townName = town.getName();
+            if (townName.equalsIgnoreCase(strippedName)) {
+                return townName;
+            }
+        }
+        return "";
+    }
+
+    public static boolean isNationShop(String owner) {
+        if (!allowNationShops) {
+            return false;
+        }
+        int prefixLength = nationShopPrefix.length();
+        String strippedOwner = owner.replace(" ", "");
+        // Check if sign line is less than the length of the nation shop prefix and that it contains the nationShopPrefix
+        if (strippedOwner.length() < prefixLength || !strippedOwner.startsWith(nationShopPrefix))
+            return false;
+
+        return !TownyUtils.getNationNameFromPrefixedName(strippedOwner).isEmpty();
+    }
+
+    public static Account getNationAccount(String name) {
+        Nation nation = TownyAPI.getInstance().getNation(TownyUtils.getNationNameFromPrefixedName(name));
+        BankAccount nationAccount = nation.getAccount();
+        String accountName = nationShopPrefix.concat(nation.getName());
+        return new Account(accountName, nationAccount.getUUID());
+    }
+
+    public static String getNationNameFromPrefixedName(String prefixedName) {
+        // Remove nation shop nationShopPrefix
+        String strippedName = prefixedName.substring(nationShopPrefix.length());
+        for (Nation nation : TownyAPI.getInstance().getNations()) {
+            String nationName = nation.getName();
+            if (nationName.equalsIgnoreCase(strippedName)) {
+                return nationName;
+            }
+        }
+        return "";
     }
 }

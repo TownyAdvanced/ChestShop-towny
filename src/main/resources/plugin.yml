@@ -8,3 +8,11 @@ author: Acrobot
 description: A towny integration for ChestShop 
  
 depend: [ChestShop, Towny]
+
+permissions:
+  ChestShop.towny.bypass:
+    default: op
+  ChestShop.towny.townshop:
+    default: op
+  ChestShop.towny.nationshop:
+    default: op

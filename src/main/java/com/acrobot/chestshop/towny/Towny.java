@@ -1,8 +1,15 @@
 package com.acrobot.chestshop.towny;
 
 import com.Acrobot.Breeze.Configuration.Configuration;
+import com.acrobot.chestshop.towny.listeners.AccountAccessListener;
+import com.acrobot.chestshop.towny.listeners.AccountQueryListener;
+import com.acrobot.chestshop.towny.listeners.CurrencyAddListener;
+import com.acrobot.chestshop.towny.listeners.PlotListener;
+import com.acrobot.chestshop.towny.listeners.SignValidationListener;
+import com.acrobot.chestshop.towny.listeners.TransactionListener;
 import com.acrobot.chestshop.towny.properties.Properties;
 import org.bukkit.event.HandlerList;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -30,8 +37,18 @@ public class Towny extends JavaPlugin {
             return;
         }
 
+        PluginManager pluginManager = getServer().getPluginManager();
+
         if (Properties.BUILDING_INSIDE_PLOTS) {
-            getServer().getPluginManager().registerEvents(new PlotListener(), this);
+            pluginManager.registerEvents(new PlotListener(), this);
+        }
+
+        if (Properties.ALLOW_TOWN_SHOPS || Properties.ALLOW_NATION_SHOPS) {
+            pluginManager.registerEvents(new AccountAccessListener(), this);
+            pluginManager.registerEvents(new AccountQueryListener(), this);
+            pluginManager.registerEvents(new CurrencyAddListener(), this);
+            pluginManager.registerEvents(new SignValidationListener(), this);
+            pluginManager.registerEvents(new TransactionListener(), this);
         }
     }
 
