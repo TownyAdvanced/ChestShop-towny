@@ -1,22 +1,11 @@
 ChestShop-Towny
 ================================
 
-[ChestShop](http://dev.bukkit.org/server-mods/chestshop/) addon to work with [Towny](https://github.com/TownyAdvanced/Towny)
+[ChestShop](https://github.com/ChestShop-authors/ChestShop-3) addon to work with [Towny](https://github.com/TownyAdvanced/Towny)
 
-Requires the use of Towny 0.98.0.0 or newer!
+Requires the use of Towny 0.101.1.0 or newer!
 
-Building
---------------------------------
-
-#### Installing
-
-To build ChestShop notifications, you'll need a Maven installation.
-* [Maven download](http://maven.apache.org/download.cgi)
-* Launch `mvn clean install` -- that's it!
-
-#### Installing external dependencies
-
-To install external dependencies, place your .jar into the main folder and launch the `install_dependency_to_repo.sh` script - it'll guide you through the process.
+Requires the use of ChestShop Build 433 (Jun 9, 2025) or newer!
 
 
 Using on a server
@@ -25,8 +14,21 @@ Using on a server
 Just throw the .jar into your /plugins folder.
 
 
-Links
+Permissions
 --------------------------------
-* [ChestShop @ Spigot](https://www.spigotmc.org/resources/chestshop.51856/)
-* [ChestShop-Towny @ BukkitDev site](https://dev.bukkit.org/projects/chestshop-towny)
-* [ChestShop-Towny Bug Tracker](https://dev.bukkit.org/projects/chestshop-towny/issues)
+
+- ChestShop.towny.bypass:
+  - default: op
+- ChestShop.towny.townshop:
+  - default: op
+  - Give to mayors in the townyperms.yml to allow them to create shops linked to the town's bank account.
+- ChestShop.towny.nationshop:
+  - default: op
+  - Give to kings in the townyperms.yml to allow them to create shops linked to the nation's bank account.
+
+
+Town & Nation shops
+--------------------------------
+
+When given the correct permission nodes, mayors and kings can create town and nation shops.
+These shops are prefixed with a configurable prefix on their signs, (defaulting to `t-` and `n-`,) followed by the town or nation name. ie: `t-BestTownEver`.
