@@ -3,6 +3,7 @@ name: ChestShop-towny
 main: com.acrobot.chestshop.towny.Towny
 version: '${project.bukkitPluginVersion}'
 api-version: ${project.bukkitAPIVersion}
+folia-supported: true
 
 author: Acrobot
 description: A towny integration for ChestShop 
