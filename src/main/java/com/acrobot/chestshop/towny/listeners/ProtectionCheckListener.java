@@ -4,6 +4,7 @@ import com.Acrobot.ChestShop.Events.Protection.ProtectionCheckEvent;
 import com.Acrobot.ChestShop.Signs.ChestShopSign;
 import com.Acrobot.ChestShop.Utils.uBlock;
 import com.acrobot.chestshop.towny.TownyUtils;
+import com.palmergames.bukkit.towny.exceptions.TownyException;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
@@ -31,11 +32,12 @@ public class ProtectionCheckListener implements Listener {
             if (sign == null)
                 return;
 
-            TownyUtils.checkShopPerms(
-                    player,
-                    ChestShopSign.getOwner(sign),
-                    ChestShopSign.getPrice(sign),
-                    () -> event.setResult(Event.Result.DENY));
+            try {
+                TownyUtils.checkShopPerms(player, ChestShopSign.getOwner(sign), ChestShopSign.getPrice(sign));
+            } catch (TownyException te) {
+                player.sendMessage(te.getMessage());
+                event.setResult(Event.Result.DENY);
+            }
         }
     }
 }

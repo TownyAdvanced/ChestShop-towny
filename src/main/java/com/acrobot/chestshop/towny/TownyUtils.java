@@ -6,6 +6,7 @@ import com.acrobot.chestshop.towny.properties.Properties;
 import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
+import com.palmergames.bukkit.towny.exceptions.TownyException;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownBlock;
@@ -197,18 +198,18 @@ public class TownyUtils {
         return "";
     }
 
-    public static void checkShopPerms(Player player, String ownerLine, String priceLine, Runnable denyAction) {
+    public static void checkShopPerms(Player player, String ownerLine, String priceLine) throws TownyException {
         if (TownyUtils.isTownShop(ownerLine)) {
             if (PriceUtil.hasBuyPrice(priceLine) && !Permission.has(player, Permission.TOWN_SHOP_BUY)) {
-                denyAction.run();
+                throw new TownyException("&cYou do not have permission.");
             } else if (PriceUtil.hasSellPrice(priceLine) && !Permission.has(player, Permission.TOWN_SHOP_SELL)) {
-                denyAction.run();
+                throw new TownyException("&cYou do not have permission.");
             }
         } else if (TownyUtils.isNationShop(ownerLine)) {
             if (PriceUtil.hasBuyPrice(priceLine) && !Permission.has(player, Permission.NATION_SHOP_BUY)) {
-                denyAction.run();
+                throw new TownyException("&cYou do not have permission.");
             } else if (PriceUtil.hasSellPrice(priceLine) && !Permission.has(player, Permission.NATION_SHOP_SELL)) {
-                denyAction.run();
+                throw new TownyException("&cYou do not have permission.");
             }
         }
     }
