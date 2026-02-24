@@ -5,6 +5,8 @@ import com.acrobot.chestshop.towny.listeners.AccountAccessListener;
 import com.acrobot.chestshop.towny.listeners.AccountQueryListener;
 import com.acrobot.chestshop.towny.listeners.CurrencyAddListener;
 import com.acrobot.chestshop.towny.listeners.PlotListener;
+import com.acrobot.chestshop.towny.listeners.PreShopCreationListener;
+import com.acrobot.chestshop.towny.listeners.ProtectionCheckListener;
 import com.acrobot.chestshop.towny.listeners.SignValidationListener;
 import com.acrobot.chestshop.towny.listeners.TransactionListener;
 import com.acrobot.chestshop.towny.properties.Properties;
@@ -49,6 +51,10 @@ public class Towny extends JavaPlugin {
             pluginManager.registerEvents(new CurrencyAddListener(), this);
             pluginManager.registerEvents(new SignValidationListener(), this);
             pluginManager.registerEvents(new TransactionListener(), this);
+            pluginManager.registerEvents(new PreShopCreationListener(), this);
+            if (Properties.CHEST_ACCESS_BY_PERMISSION) {
+                pluginManager.registerEvents(new ProtectionCheckListener(), this);
+            }
         }
     }
 
