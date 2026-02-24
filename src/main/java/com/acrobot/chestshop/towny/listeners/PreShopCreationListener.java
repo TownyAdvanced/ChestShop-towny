@@ -3,7 +3,6 @@ package com.acrobot.chestshop.towny.listeners;
 import com.Acrobot.ChestShop.Events.PreShopCreationEvent;
 import com.Acrobot.ChestShop.Signs.ChestShopSign;
 import com.acrobot.chestshop.towny.TownyUtils;
-import com.palmergames.bukkit.towny.exceptions.TownyException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -23,8 +22,8 @@ public class PreShopCreationListener implements Listener {
 
         try {
             TownyUtils.checkShopPerms(player, ChestShopSign.getOwner(signLines), ChestShopSign.getPrice(signLines));
-        } catch (TownyException te) {
-            player.sendMessage(te.getMessage());
+        } catch (Exception e) {
+            player.sendMessage(e.getMessage());
             event.setOutcome(NO_PERMISSION);
         }
     }
