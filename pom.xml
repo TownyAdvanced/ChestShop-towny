@@ -6,22 +6,22 @@
 
     <groupId>com.acrobot.chestshop.towny</groupId>
     <artifactId>chestshop-towny</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <name>ChestShop-towny</name>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.bukkitPluginVersion>${project.version} ${buildDescription}</project.bukkitPluginVersion>
-        <project.bukkitAPIVersion>1.13</project.bukkitAPIVersion>
+        <project.bukkitAPIVersion>1.19</project.bukkitAPIVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <bukkit.dependency.version>1.20.6-R0.1-SNAPSHOT</bukkit.dependency.version>
     </properties>
 
     <repositories>
         <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
         <repository>
             <id>glaremaster-repo</id>
@@ -35,9 +35,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>${bukkit.dependency.version}</version>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.21.11-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -49,7 +49,7 @@
         <dependency>
             <groupId>com.palmergames.bukkit.towny</groupId>
             <artifactId>towny</artifactId>
-            <version>0.101.1.0</version>
+            <version>0.102.0.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
